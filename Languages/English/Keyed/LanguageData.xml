@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  
+  <MTC.MoreThanCapable>More than Capable</MTC.MoreThanCapable>
+  
+  <MTC.allowFDJ>Allow "Force Do Job" Behavior.</MTC.allowFDJ>
+  <MTC.allowFDJTip>If this is checked, a pawn can be told to do a specific job, even if not assigned to the work type to which the job belongs, so long as he or she doesn't actually hate the work type. If you prefer vanilla behavior, and want to be able to tell a pawn to do a specific job only if he or she is actually assigned to the relevant work type, then uncheck it.</MTC.allowFDJTip>
+  
+  <MTC.IncapableOf>Hated Work Types</MTC.IncapableOf>
+  <MTC.CannotDoThisWork>{0} hates doing this kind of work.</MTC.CannotDoThisWork>
+  
+  <MTC.CannotPrioritizeWorkGiverDisabled>Cannot prioritize (non-violent pawn not assigned a weapon)</MTC.CannotPrioritizeWorkGiverDisabled>
+  <MTC.CannotPrioritizeNotAssignedToWorkType>Cannot prioritize (pawn hates and/or is not assigned to {0})</MTC.CannotPrioritizeNotAssignedToWorkType>
+  <MTC.IsIncapableOfViolenceLower>{0} is non-violent and not assigned a weapon</MTC.IsIncapableOfViolenceLower>
+  
+  <MTC.BadWorkAssignment.Label>Bad work assignment</MTC.BadWorkAssignment.Label>
+  <MTC.BadWorkAssignment.Explanation>At least one pawn has been assigned to a hated work type. In the short term, this probably isn't a problem, but over time, it could lead to extreme unhappiness.</MTC.BadWorkAssignment.Explanation>
+  
+  <MTC.AssignedAWeapon.Label>Non-violent pawn assigned a weapon</MTC.AssignedAWeapon.Label>
+  <MTC.AssignedAWeapon.Explanation>A pawn who detests violence has been assigned a weapon. In the short term, this probably isn't a problem, but over time, it could lead to extreme unhappiness.</MTC.AssignedAWeapon.Explanation>
+  
+</LanguageData>

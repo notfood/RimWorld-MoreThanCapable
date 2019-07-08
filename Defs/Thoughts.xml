@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <ThoughtDef Name="MTCBadWork" Abstract="True">
+    <workerClass>MoreThanCapable.ThoughtWorker_AssignedToBadWork</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <nullifiedIfNotColonist>true</nullifiedIfNotColonist>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToArt</defName>
+    <hediff>AssignedToArt</hediff>
+    <stages>
+      <li>
+        <label>assigned to art</label>
+        <description>I hate art.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to art (Annoyed)</label>
+        <description>I really hate art.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to art (Angry)</label>
+        <description>I really, really hate art!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to art (Furious)</label>
+        <description>I can't believe I'm still assigned to art!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to art (Mad)</label>
+        <description>If I'm assigned to art for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to art</label>
+        <description>I'm still annoyed that I was assigned to art.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToCleaning</defName>
+    <hediff>AssignedToCleaning</hediff>
+    <stages>
+      <li>
+        <label>assigned to cleaning</label>
+        <description>I hate cleaning.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to cleaning</label>
+        <description>I'm still annoyed that I was assigned to cleaning.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToConstruction</defName>
+    <hediff>AssignedToConstruction</hediff>
+    <stages>
+      <li>
+        <label>assigned to construction</label>
+        <description>I hate construction.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to construction (Annoyed)</label>
+        <description>I really hate construction.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to construction (Angry)</label>
+        <description>I really, really hate construction!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to construction (Furious)</label>
+        <description>I can't believe I'm still assigned to construction!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to construction (Mad)</label>
+        <description>If I'm assigned to construction for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to construction</label>
+        <description>I'm still annoyed that I was assigned to construction.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToCooking</defName>
+    <hediff>AssignedToCooking</hediff>
+    <stages>
+      <li>
+        <label>assigned to cooking</label>
+        <description>I hate cooking.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to cooking (Annoyed)</label>
+        <description>I really hate cooking.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to cooking (Angry)</label>
+        <description>I really, really hate cooking!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to cooking (Furious)</label>
+        <description>I can't believe I'm still assigned to cooking!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to cooking (Mad)</label>
+        <description>If I'm assigned to cooking for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to cooking</label>
+        <description>I'm still annoyed that I was assigned to cooking.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToCrafting</defName>
+    <hediff>AssignedToCrafting</hediff>
+    <stages>
+      <li>
+        <label>assigned to crafting</label>
+        <description>I hate crafting.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to crafting (Annoyed)</label>
+        <description>I really hate crafting.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to crafting (Angry)</label>
+        <description>I really, really hate crafting!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to crafting (Furious)</label>
+        <description>I can't believe I'm still assigned to crafting!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to crafting (Mad)</label>
+        <description>If I'm assigned to crafting for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to crafting</label>
+        <description>I'm still annoyed that I was assigned to crafting.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToDoctor</defName>
+    <hediff>AssignedToDoctor</hediff>
+    <stages>
+      <li>
+        <label>assigned to doctor</label>
+        <description>I hate playing doctor.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to doctor (Annoyed)</label>
+        <description>I really hate playing doctor.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to doctor (Angry)</label>
+        <description>I really, really hate playing doctor!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to doctor (Furious)</label>
+        <description>I can't believe I'm still assigned to play doctor!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to doctor (Mad)</label>
+        <description>If I'm assigned to play doctor for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to doctor</label>
+        <description>I'm still annoyed that I was assigned to play doctor.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToFirefighter</defName>
+    <hediff>AssignedToFirefighter</hediff>
+    <stages>
+      <li>
+        <label>assigned to firefighter</label>
+        <description>I hate firefighting.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to firefighter (Annoyed)</label>
+        <description>I really hate firefighting.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to firefighter (Angry)</label>
+        <description>I really, really hate firefighting!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to firefighter (Furious)</label>
+        <description>I can't believe I'm still assigned to firefighting!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to firefighter (Mad)</label>
+        <description>If I'm assigned to firefighting for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to firefighter</label>
+        <description>I'm still annoyed that I was assigned to firefighting.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToGrowing</defName>
+    <hediff>AssignedToGrowing</hediff>
+    <stages>
+      <li>
+        <label>assigned to growing</label>
+        <description>I hate growing things.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to growing (Annoyed)</label>
+        <description>I really hate growing things.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to growing (Angry)</label>
+        <description>I really, really hate growing things!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to growing (Furious)</label>
+        <description>I can't believe I'm still assigned to growing things!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to growing (Mad)</label>
+        <description>If I'm assigned to growing things for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to growing</label>
+        <description>I'm still annoyed that I was assigned to growing things.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToHandling</defName>
+    <hediff>AssignedToHandling</hediff>
+    <stages>
+      <li>
+        <label>assigned to handling</label>
+        <description>I hate animals.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to handling (Annoyed)</label>
+        <description>I really hate animals.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to handling (Angry)</label>
+        <description>I really, really hate animals!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to handling (Furious)</label>
+        <description>I can't believe I'm still assigned to handling animals!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to handling (Mad)</label>
+        <description>If I'm assigned to handling animals for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to handling</label>
+        <description>I'm still annoyed that I was assigned to handling animals.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToHauling</defName>
+    <hediff>AssignedToHauling</hediff>
+    <stages>
+      <li>
+        <label>assigned to hauling</label>
+        <description>I hate hauling.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to hauling</label>
+        <description>I'm still annoyed that I was assigned to hauling.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToHunting</defName>
+    <hediff>AssignedToHunting</hediff>
+    <stages>
+      <li>
+        <label>assigned to hunting</label>
+        <description>I hate hunting.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to hunting (Annoyed)</label>
+        <description>I really hate hunting.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to hunting (Angry)</label>
+        <description>I really, really hate hunting!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to hunting (Furious)</label>
+        <description>I can't believe I'm still assigned to hunting!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to hunting (Mad)</label>
+        <description>If I'm assigned to hunting for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to hunting</label>
+        <description>I'm still annoyed that I was assigned to hunting.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToMining</defName>
+    <hediff>AssignedToMining</hediff>
+    <stages>
+      <li>
+        <label>assigned to mining</label>
+        <description>I hate mining.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to mining (Annoyed)</label>
+        <description>I really hate mining.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to mining (Angry)</label>
+        <description>I really, really hate mining!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to mining (Furious)</label>
+        <description>I can't believe I'm still assigned to mining!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to mining (Mad)</label>
+        <description>If I'm assigned to mining for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to mining</label>
+        <description>I'm still annoyed that I was assigned to mining.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToPlantCutting</defName>
+    <hediff>AssignedToPlantCutting</hediff>
+    <stages>
+      <li>
+        <label>assigned to plant cutting</label>
+        <description>I hate plant cutting.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to plant cutting</label>
+        <description>I'm still annoyed that I was assigned to plant cutting.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToResearch</defName>
+    <hediff>AssignedToResearch</hediff>
+    <stages>
+      <li>
+        <label>assigned to research</label>
+        <description>I hate research.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to research (Annoyed)</label>
+        <description>I really hate research.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to research (Angry)</label>
+        <description>I really, really hate research!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to research (Furious)</label>
+        <description>I can't believe I'm still assigned to research!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to research (Mad)</label>
+        <description>If I'm assigned to research for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to research</label>
+        <description>I'm still annoyed that I was assigned to research.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToSmithing</defName>
+    <hediff>AssignedToSmithing</hediff>
+    <stages>
+      <li>
+        <label>assigned to smithing</label>
+        <description>I hate smithing.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to smithing (Annoyed)</label>
+        <description>I really hate smithing.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to smithing (Angry)</label>
+        <description>I really, really hate smithing!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to smithing (Furious)</label>
+        <description>I can't believe I'm still assigned to smithing!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to smithing (Mad)</label>
+        <description>If I'm assigned to smithing for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to smithing</label>
+        <description>I'm still annoyed that I was assigned to smithing.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToTailoring</defName>
+    <hediff>AssignedToTailoring</hediff>
+    <stages>
+      <li>
+        <label>assigned to tailoring</label>
+        <description>I hate tailoring.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to tailoring (Annoyed)</label>
+        <description>I really hate tailoring.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to tailoring (Angry)</label>
+        <description>I really, really hate tailoring!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to tailoring (Furious)</label>
+        <description>I can't believe I'm still assigned to tailoring!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to tailoring (Mad)</label>
+        <description>If I'm assigned to tailoring for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to tailoring</label>
+        <description>I'm still annoyed that I was assigned to tailoring.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedToWarden</defName>
+    <hediff>AssignedToWarden</hediff>
+    <stages>
+      <li>
+        <label>assigned to warden</label>
+        <description>I hate playing warden.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to warden (Annoyed)</label>
+        <description>I really hate playing warden.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to warden (Angry)</label>
+        <description>I really, really hate playing warden!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to warden (Furious)</label>
+        <description>I can't believe I'm still assigned to play warden!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned to warden (Mad)</label>
+        <description>If I'm assigned to play warden for one more minute, I swear I'm going to lose it!</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned to warden</label>
+        <description>I'm still annoyed that I was assigned to play warden.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="MTCBadWork">
+    <defName>AssignedAWeapon</defName>
+    <hediff>AssignedAWeapon</hediff>
+    <stages>
+      <li>
+        <label>assigned a weapon</label>
+        <description>I hate carrying a weapon.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned a weapon (Annoyed)</label>
+        <description>I really hate carrying a weapon.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned a weapon (Angry)</label>
+        <description>I really, really hate carrying a weapon!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned a weapon (Furious)</label>
+        <description>I can't believe I'm still assigned to carry a weapon!</description>
+        <baseMoodEffect>-35</baseMoodEffect>
+      </li>
+      <li>
+        <label>assigned a weapon (Mad)</label>
+        <description>If I'm assigned to carry a weapon for one more minute, I swear I'm going to lose it! (Yeah, that's probably a bit ironic, but I don't care!)</description>
+        <baseMoodEffect>-50</baseMoodEffect>
+      </li>
+      <li>
+        <label>was assigned a weapon</label>
+        <description>I'm still annoyed that I was assigned to carry a weapon.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+</Defs>

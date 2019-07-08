@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <HediffDef Name="HediffWhineBase" Abstract="True">
+    <hediffClass>MoreThanCapable.Hediff_Whine</hediffClass>
+    <defaultLabelColor>(1.0, 1.0, 0.5)</defaultLabelColor>
+    <initialSeverity>0.01</initialSeverity>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBase" Name="HediffWhineBaseEasy" Abstract="True">
+    
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBase" Name="HediffWhineBaseHard" Abstract="True">
+    <stages>
+      <li>
+        <label>Uneasy</label>
+      </li>
+      <li>
+        <label>Annoyed</label>
+        <minSeverity>0.1</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.025</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>Angry</label>
+        <minSeverity>0.2</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.05</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.025</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>Furious</label>
+        <minSeverity>0.3</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.15</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.05</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>Mad</label>
+        <minSeverity>0.4</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.3</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToArt</defName>
+    <label>assigned to art</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseEasy">
+    <defName>AssignedToCleaning</defName>
+    <label>assigned to cleaning</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToConstruction</defName>
+    <label>assigned to construction</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToCooking</defName>
+    <label>assigned to cooking</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToCrafting</defName>
+    <label>assigned to crafting</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToDoctor</defName>
+    <label>assigned to doctor</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToFirefighter</defName>
+    <label>assigned to firefighter</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToGrowing</defName>
+    <label>assigned to growing</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToHandling</defName>
+    <label>assigned to handling</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseEasy">
+    <defName>AssignedToHauling</defName>
+    <label>assigned to hauling</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToHunting</defName>
+    <label>assigned to hunting</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToMining</defName>
+    <label>assigned to mining</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseEasy">
+    <defName>AssignedToPlantCutting</defName>
+    <label>assigned to plant cutting</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToResearch</defName>
+    <label>assigned to research</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToSmithing</defName>
+    <label>assigned to smithing</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToTailoring</defName>
+    <label>assigned to tailoring</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedToWarden</defName>
+    <label>assigned to warden</label>
+  </HediffDef>
+  
+  <HediffDef ParentName="HediffWhineBaseHard">
+    <defName>AssignedAWeapon</defName>
+    <label>assigned a weapon</label>
+  </HediffDef>
+  
+</Defs>

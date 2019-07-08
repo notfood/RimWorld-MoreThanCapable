@@ -1,0 +1,80 @@
+﻿<Patch>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/HediffGiverSetDef[defName = "OrganicStandard"]/hediffGivers</xpath>
+    <value>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToArt</hediff>
+        <workType>Art</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Easy">
+        <hediff>AssignedToCleaning</hediff>
+        <workType>Cleaning</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToConstruction</hediff>
+        <workType>Construction</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToCooking</hediff>
+        <workType>Cooking</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToCrafting</hediff>
+        <workType>Crafting</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToDoctor</hediff>
+        <workType>Doctor</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToFirefighter</hediff>
+        <workType>Firefighter</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToGrowing</hediff>
+        <workType>Growing</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToHandling</hediff>
+        <workType>Handling</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Easy">
+        <hediff>AssignedToHauling</hediff>
+        <workType>Hauling</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToHunting</hediff>
+        <workType>Hunting</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToMining</hediff>
+        <workType>Mining</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Easy">
+        <hediff>AssignedToPlantCutting</hediff>
+        <workType>PlantCutting</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToResearch</hediff>
+        <workType>Research</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToSmithing</hediff>
+        <workType>Smithing</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToTailoring</hediff>
+        <workType>Tailoring</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedToBadWork_Hard">
+        <hediff>AssignedToWarden</hediff>
+        <workType>Warden</workType>
+      </li>
+      <li Class="MoreThanCapable.HediffGiver_AssignedAWeapon">
+        <hediff>AssignedAWeapon</hediff>
+      </li>
+    </value>
+  </Operation>
+  
+</Patch>

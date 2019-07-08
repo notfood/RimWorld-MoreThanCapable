@@ -1,0 +1,123 @@
+---------------------------------------------------------------------------------
+  Changelog for "More than Capable"
+---------------------------------------------------------------------------------
+
+- 07/06/2019
+	- Complete overhaul, full rewrite.
+	- Rewrote all the C# to repeat itself less.
+	- Rewrote all the XML/Patches to reflect the changes.
+	- Updated Harmony to 1.2.0.2
+	- Initial release of "More than Capable" by NotFood.
+
+- 12/08/2018
+	- PAC should now once again work just fine in conjunction with Fluffy's "Work
+	  Tab" mod.
+	  
+- 12/05/2018
+	- Rewrote XML patches to improve load efficiency slightly.
+
+- 10/14/2018
+	- Updated to RimWorld 1.0 release!
+	- Pawns who hate violence but have a passion for the Animals skill will no
+	  longer display on the work tab as having a passion for hunting.
+	  
+- 09/29/2018
+	- "Force Do Job" behavior, which allows a pawn to be told to do a specific
+	  job even if not assigned to the relevant work type, is still the default,
+	  but can now be disabled via a new configuration option.
+	
+- 09/24/2018
+	- Attempting to draft pawns such as hacked mechanoids from Roolo's "What the
+	  Hack?!" (which lack some of the attributes of colonist pawns) should no
+	  longer generate error messages.
+	  
+- 09/22/2018
+	- "Incapable of dumb labor" is now a special case. Pawns who hate dumb labor
+	  are given a trait that reduces their carrying capacity and unskilled labor
+	  work speed. They can be assigned to hauling or cleaning with only a minor
+	  mood penalty, which will *not* increase over time.
+	- Pawns who hate plant work or skilled labor but are assigned to cut plants
+	  are handled similarly, with a simple static mood penalty as opposed to a
+	  scaling penalty.
+	- Plant cutting is now consistently treated, as it is in vanilla, as skilled
+	  labor rather than dumb labor.
+	- Updated the version of the Harmony library the mod uses.
+
+- 09/15/2018
+	- Updated to RimWorld b19 release.
+	- Removed "Mod Sync Ninja" files.
+
+- 12/04/2017
+	- The mod now works with the "Mod Sync Ninja" updater.
+	
+- 12/03/2017
+	- Made a slight fix to one of the fixes. That's necessary sometimes. :)
+
+- 12/03/2017
+	- BUG FIX: All "dumb labor" and "skilled labor" jobs will be appropriately
+ 	  flagged on the work tab for pawns who don't like doing them.
+	- BUG FIX: Non-violent pawns will no longer complain about being assigned to
+	  hunting unless they actually *are* assigned to hunting.
+
+- 12/03/2017
+	- The mod will now work correctly in conjunction with mods such as "Complex
+	  Jobs" or "Job Splitter," which subdivide work types.
+
+- 11/13/2017
+	- Initial penalties for hated work types are now lower, and the penalties 
+	  worsen a bit more slowly than before, though by the 48-hour mark, they'll
+	  reach the same maximum as in previous versions of the mod.
+	- Added Japanese language translation files by Proxyer.
+
+- 11/12/2017
+	- Updated to RimWorld b18 release.
+
+- 09/05/2017
+	- Tools which can be used as weapons but which don't buff melee skill are no
+	  longer considered weapons when wielded by non-violent pawns. Pacifist pawns
+	  can thus now use such tools without penalty, though they can't actually use
+	  them as weapons.
+
+- 08/24/2017
+	- Non-violent pawns will no longer be considered armed (to determine whether
+	  they're capable of violent actions) if they're equipped with an item that
+	  isn't actually a weapon.
+
+- 08/05/2017
+	- The mod now incorporates "force do job" functionality. Pawns can be given
+	  specific tasks, even if they're not actually assigned to the relevant work
+	  type, as long as it's not a work type that they hate.
+
+- 07/31/2017
+	- Fixed the fix of the fix. Sigh.
+
+- 07/30/2017
+	- Fixed the fix so raids will again generate. Sorry about that!
+
+- 07/30/2017
+	- Fixed the glitch that was preventing pawns who hate firefighting from
+	  putting out fires, even if assigned to do so. This should also take care
+	  of any other miscellaneous cases of pawns not doing what they're assigned.
+	
+- 07/14/2017
+	- Added Korean language files, generously provided by Steam user sogo100.
+
+- 07/13/2017
+	- This mod is now compatible with Fluffy's "Work Tab" mod.
+
+- 07/11/2017
+	- In addition to mood debuffs, hated work assignments now also penalize
+	  movement and, eventually, manipulation.
+	- The lingering "was assigned to hated work" debuff now lasts a minimum of 
+	  one hour. (Otherwise, it still lasts for half as long as the assignment, to
+	  a maximum of one day.)
+	
+- 07/06/2017
+	- Initial release of this, Rainbeau's alternate "no traits" version of PAC.
+
+- 06/20/2017
+	- Initial RimRue/Rainbeau collaborative update.
+
+- 06/17/2017
+	- Initial release of PAC for RimWorld a17 by RimRue, with incapabilities
+	  replaced by negative traits.

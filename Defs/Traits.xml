@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <TraitDef>
+    <defName>HatesDumbLabor</defName>
+    <commonality>0.001</commonality>
+    <degreeDatas>
+      <li>
+        <label>hates dumb labor</label>
+        <description>[PAWN_nameDef] detests manual labor, feeling that tasks such as cleaning and hauling are beneath [PAWN_objective]. [PAWN_pronoun] will perform such tasks more slowly than others would, and will also carry less per load when required to haul.</description>
+        <statOffsets>
+          <UnskilledLaborSpeed>-0.20</UnskilledLaborSpeed>
+          <CarryingCapacity>-25</CarryingCapacity>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+  
+</Defs>
