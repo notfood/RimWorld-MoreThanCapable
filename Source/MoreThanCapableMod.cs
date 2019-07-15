@@ -20,7 +20,9 @@ namespace MoreThanCapable
 
             HarmonyInstance.Create("rimworld.moreThanCapable").PatchAll();
 
-            Settings = GetSettings<Settings>();
+            LongEventHandler.ExecuteWhenFinished(delegate {
+                Settings = GetSettings<Settings>();
+            });
         }
 
         public static void Setup()
