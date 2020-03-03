@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -18,7 +18,7 @@ namespace MoreThanCapable
         {
             LongEventHandler.QueueLongEvent(Setup, "LibraryStartup", false, null);
 
-            HarmonyInstance.Create("rimworld.moreThanCapable").PatchAll();
+            new Harmony("rimworld.moreThanCapable").PatchAll();
 
             LongEventHandler.ExecuteWhenFinished(delegate {
                 Settings = GetSettings<Settings>();
@@ -95,13 +95,15 @@ namespace MoreThanCapable
         static IEnumerable<WorkTypeDef> AllBadWorkFor(Pawn pawn)
         {
             return workTypes
-                .Where(kvp => (kvp.Key & pawn.story.CombinedDisabledWorkTags) != WorkTags.None)
+                .Where(kvp => (kvp.Key & pawn.CombinedDisabledWorkTags) != WorkTags.None)
                 .SelectMany(l => l.Value);
         }
 
         public static bool HasWeapon(Pawn pawn)
         {
-            if (pawn.equipment.Primary == null) {
+            Log.Message($"{pawn} {pawn.equipment} {pawn.equipment?.Primary}");
+
+            if (pawn.equipment?.Primary == null) {
                 return false;
             }
 

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
@@ -12,7 +12,7 @@ using Verse.AI;
 
 namespace MoreThanCapable
 {
-    [HarmonyPatch(typeof(CharacterCardUtility), "DrawCharacterCard")]
+    [HarmonyPatch(typeof(CharacterCardUtility), nameof(CharacterCardUtility.DrawCharacterCard))]
     static class CharacterCardUtility_DrawCharacterCard
     {
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
@@ -63,7 +63,7 @@ namespace MoreThanCapable
         }
     }
 
-    [HarmonyPatch(typeof(Pawn_WorkSettings), "GetPriority")]
+    [HarmonyPatch(typeof(Pawn_WorkSettings), nameof(Pawn_WorkSettings.GetPriority))]
     static class Pawn_WorkSettings_GetPriority
     {
         [HarmonyPriority(Priority.VeryLow)]
@@ -75,7 +75,7 @@ namespace MoreThanCapable
         }
     }
 
-    [HarmonyPatch(typeof(FloatMenuMakerMap), "ChoicesAtFor")]
+    [HarmonyPatch(typeof(FloatMenuMakerMap), nameof(FloatMenuMakerMap.ChoicesAtFor))]
     internal static class FloatMenuMakerMap_ChoicesAtFor
     {
         internal static bool skip;
@@ -134,7 +134,7 @@ namespace MoreThanCapable
         }
     }
 
-    [HarmonyPatch(typeof(FloatMenuUtility), "GetMeleeAttackAction")]
+    [HarmonyPatch(typeof(FloatMenuUtility), nameof(FloatMenuUtility.GetMeleeAttackAction))]
     static class FloatMenuUtility_GetMeleeAttackAction
     {
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
@@ -208,7 +208,7 @@ namespace MoreThanCapable
 
         static bool IsTagDisabled(Pawn pawn, WorkTags workTag)
         {
-            return (pawn.story.CombinedDisabledWorkTags & workTag) != WorkTags.None;
+            return (pawn.CombinedDisabledWorkTags & workTag) != WorkTags.None;
         }
 
         static void Disable(Pawn pawn, SkillDef skill)
@@ -217,32 +217,16 @@ namespace MoreThanCapable
         }
     }
 
-    [HarmonyPatch(typeof(Pawn_StoryTracker), "OneOfWorkTypesIsDisabled")]
-    static class Pawn_StoryTracker_OneOfWorkTypesIsDisabled
+    [HarmonyPatch(typeof(Pawn), nameof(Pawn.WorkTagIsDisabled))]
+    static class Pawn_WorkTagIsDisabled
     {
-        public static bool Prefix(List<WorkTypeDef> wts, ref bool __result, Pawn ___pawn)
+        public static bool Prefix(WorkTags w, Pawn __instance)
         {
-            for (int i = 0; i < wts.Count; i++) {
-                if (___pawn.story.DisabledWorkTypes.Contains(wts[i])) {
-                    __result = true;
-                    break;
-                }
-            }
-
-            return false;
+            return !__instance.NonHumanlikeOrWildMan() && w == WorkTags.Violent && !MoreThanCapableMod.HasWeapon(__instance);
         }
     }
 
-    [HarmonyPatch(typeof(Pawn_StoryTracker), "WorkTagIsDisabled")]
-    static class Pawn_StoryTracker_WorkTagIsDisabled
-    {
-        public static bool Prefix(WorkTags w, Pawn ___pawn)
-        {
-            return w == WorkTags.Violent && !MoreThanCapableMod.HasWeapon(___pawn);
-        }
-    }
-
-    [HarmonyPatch(typeof(Pawn_StoryTracker), "WorkTypeIsDisabled")]
+    [HarmonyPatch(typeof(Pawn), nameof(Pawn.WorkTypeIsDisabled))]
     static class Pawn_StoryTracker_WorkTypeIsDisabled
     {
         public static bool Prefix(WorkTypeDef w)
@@ -251,7 +235,7 @@ namespace MoreThanCapable
         }
     }
 
-    [HarmonyPatch(typeof(Pawn_WorkSettings), "EnableAndInitialize")]
+    [HarmonyPatch(typeof(Pawn_WorkSettings), nameof(Pawn_WorkSettings.EnableAndInitialize))]
     static class Pawn_WorkSettings_EnableAndInitialize
     {
         static void Postfix(Pawn ___pawn)
@@ -325,14 +309,14 @@ namespace MoreThanCapable
         }
     }
 
-    [HarmonyPatch(typeof(WidgetsWork), "TipForPawnWorker")]
+    [HarmonyPatch(typeof(WidgetsWork), nameof(WidgetsWork.TipForPawnWorker))]
     static class WidgetsWork_TipForPawnWorker
     {
         public static bool Prefix(Pawn p, WorkTypeDef wDef, ref string __result)
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine(wDef.gerundLabel.CapitalizeFirst());
-            if (p.story.DisabledWorkTypes.Contains(wDef)) {
+            if (p.WorkTypeIsDisabled(wDef)) {
                 stringBuilder.Append("MTC.CannotDoThisWork".Translate(p.LabelShort));
                 __result = stringBuilder.ToString();
                 return false;

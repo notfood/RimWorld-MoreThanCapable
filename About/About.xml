@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ModMetaData>
-
+  <packageId>notfood.MoreThanCapable</packageId>
   <name>More Than Capable</name>
   <author>notfood</author>
   <url>https://github.com/notfood/RimWorld-MoreThanCapable</url>
-  <supportedVersions><li>1.0</li></supportedVersions>
+  <supportedVersions>
+    <li>1.1</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
   <description>(Last update: 2019-07-07)
 
 Tired of pawns who refuse to do certain types of work, even when their own lives and the survival of the colony depend on it? This mod changes the way in which the game handles "incapabilities." On the pawns' character tabs, you'll see that the "Incapable of" list has been replaced with a list of "Hated work types." These types of work are marked in amber on the work tab, and aren't assigned by default. But they can be assigned if necessary, as any pawn can be assigned to any type of work. Be aware, though, that if you assign a pawn to do hated work, there's a mood penalty (and eventually movement and even manipulation penalties) that will only grow worse the longer the assignment lasts. This mod is intended to allow you to assign pawns to work they hate in emergency situations. It is *not* intended to allow such assignments to be made on a long-term basis.

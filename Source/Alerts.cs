@@ -33,7 +33,7 @@ namespace MoreThanCapable
         public override AlertReport GetReport()
         {
             foreach (Pawn current in PawnsFinder.AllMaps_FreeColonistsSpawned) {
-                if (current.story.DisabledWorkTypes.Contains(WorkTypeDefOf.Hunting)
+                if (current.WorkTypeIsDisabled(WorkTypeDefOf.Hunting)
                   && ((current.equipment.Primary != null) && MoreThanCapableMod.HasWeapon(current))) {
                     return current;
                 }
