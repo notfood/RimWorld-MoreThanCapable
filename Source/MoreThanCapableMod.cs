@@ -101,8 +101,6 @@ namespace MoreThanCapable
 
         public static bool HasWeapon(Pawn pawn)
         {
-            Log.Message($"{pawn} {pawn.equipment} {pawn.equipment?.Primary}");
-
             if (pawn.equipment?.Primary == null) {
                 return false;
             }

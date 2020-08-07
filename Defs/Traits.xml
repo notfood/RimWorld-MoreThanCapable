@@ -9,7 +9,7 @@
         <label>hates dumb labor</label>
         <description>[PAWN_nameDef] detests manual labor, feeling that tasks such as cleaning and hauling are beneath [PAWN_objective]. [PAWN_pronoun] will perform such tasks more slowly than others would, and will also carry less per load when required to haul.</description>
         <statOffsets>
-          <GeneralLaborSpeed>-0.20</GeneralLaborSpeed>
+          <UnskilledLaborSpeed>-0.20</UnskilledLaborSpeed>
           <CarryingCapacity>-25</CarryingCapacity>
         </statOffsets>
       </li>
