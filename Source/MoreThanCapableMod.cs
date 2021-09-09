@@ -12,7 +12,7 @@ namespace MoreThanCapable
     {
         public static Settings Settings;
 
-        static Dictionary<WorkTags, List<WorkTypeDef>> workTypes = new Dictionary<WorkTags, List<WorkTypeDef>>();
+        static Dictionary<WorkTags, HashSet<WorkTypeDef>> workTypes = new Dictionary<WorkTags, HashSet<WorkTypeDef>>();
 
         public MoreThanCapableMod(ModContentPack content) : base(content)
         {
@@ -30,8 +30,10 @@ namespace MoreThanCapable
             foreach (var workTag in Enum.GetValues(typeof(WorkTags)).Cast<WorkTags>()) {
                 var jobList = DefDatabase<WorkTypeDef>
                     .AllDefs
-                    .Where(wtd => wtd.visible && (wtd.workTags & workTag) != WorkTags.None)
-                    .ToList();
+                    .Where(wtd => wtd.visible
+                        && (wtd.workTags & workTag) != WorkTags.None
+                        && wtd.defName != "FinishingOff")
+                    .ToHashSet();
 
                 workTypes.Add(workTag, jobList);
             }
@@ -63,8 +65,6 @@ namespace MoreThanCapable
                 }
             }
 
-            workTypes[WorkTags.Violent].RemoveAll(wtd => wtd.defName == "FinishingOff");
-
             if (ModsConfig.ActiveModsInLoadOrder.Any(mod => mod.Name.Contains("Force Do Job"))) {
                 Log.Error("MoreThanCapable :: You should remove \"Force Do Job\" from your mod list, as \"MoreThanCapable\" incorporates its functionality, and if both mods are running, you may encounter odd behavior.");
             }
@@ -72,7 +72,11 @@ namespace MoreThanCapable
 
         public static void ResetHatedWorkTypes(Pawn pawn)
         {
-            foreach (var wtd in AllBadWorkFor(pawn)) {
+            IEnumerable<WorkTypeDef> badwork = workTypes
+                .Where(kvp => (kvp.Key & pawn.CombinedDisabledWorkTags) != WorkTags.None)
+                .SelectMany(l => l.Value);
+
+            foreach (var wtd in badwork) {
                 pawn.workSettings.SetPriority(wtd, 0);
             }
         }
@@ -84,19 +88,12 @@ namespace MoreThanCapable
 
         public static bool IsBadWork(Pawn pawn, WorkTypeDef wtd)
         {
-            return AllBadWorkFor(pawn).Contains(wtd);
+            return (wtd.workTags & pawn.CombinedDisabledWorkTags) != WorkTags.None;
         }
 
         public static bool HasBadWork(Pawn pawn)
         {
-            return AllBadWorkFor(pawn).Any(pawn.workSettings.WorkIsActive);
-        }
-
-        static IEnumerable<WorkTypeDef> AllBadWorkFor(Pawn pawn)
-        {
-            return workTypes
-                .Where(kvp => (kvp.Key & pawn.CombinedDisabledWorkTags) != WorkTags.None)
-                .SelectMany(l => l.Value);
+            return workTypes.Any(kvp => (kvp.Key & pawn.CombinedDisabledWorkTags) != WorkTags.None && kvp.Value.Any(pawn.workSettings.WorkIsActive));
         }
 
         public static bool HasWeapon(Pawn pawn)
