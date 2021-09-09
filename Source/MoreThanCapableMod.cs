@@ -30,7 +30,7 @@ namespace MoreThanCapable
             foreach (var workTag in Enum.GetValues(typeof(WorkTags)).Cast<WorkTags>()) {
                 var jobList = DefDatabase<WorkTypeDef>
                     .AllDefs
-                    .Where(wtd => (wtd.workTags & workTag) != WorkTags.None)
+                    .Where(wtd => wtd.visible && (wtd.workTags & workTag) != WorkTags.None)
                     .ToList();
 
                 workTypes.Add(workTag, jobList);
@@ -79,7 +79,7 @@ namespace MoreThanCapable
 
         public static bool IsBadWorkActive(Pawn pawn, WorkTypeDef wtd)
         {
-            return IsBadWork(pawn, wtd) && pawn.workSettings.WorkIsActive(wtd);
+            return pawn.workSettings.WorkIsActive(wtd) && IsBadWork(pawn, wtd);
         }
 
         public static bool IsBadWork(Pawn pawn, WorkTypeDef wtd)

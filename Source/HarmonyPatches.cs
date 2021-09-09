@@ -44,7 +44,7 @@ namespace MoreThanCapable
         }
     }
 
-    [HarmonyPatch(typeof(FloatMenuMakerMap), "AddJobGiverWorkOrders_NewTmp")]
+    [HarmonyPatch(typeof(FloatMenuMakerMap), "AddJobGiverWorkOrders")]
     static class FloatMenuMakerMap_AddUndraftedOrders
     {
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
