@@ -141,4 +141,10 @@ namespace MoreThanCapable
             Scribe_Values.Look(ref allowFDJ, "allowFDJ", true);
         }
     }
+
+    [StaticConstructorOnStartup]
+    public static class Resources
+    {
+        public static Texture2D workBoxBGTexDespised = ContentFinder<Texture2D>.Get("UI/Widgets/WorkBoxBG_Despised");
+    }
 }

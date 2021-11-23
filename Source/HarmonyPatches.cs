@@ -256,56 +256,36 @@ namespace MoreThanCapable
     [HarmonyPatch(typeof(WidgetsWork), "DrawWorkBoxBackground")]
     static class WidgetsWork_DrawWorkBoxBackground
     {
-        static bool Prefix(Rect rect, Pawn p, WorkTypeDef workDef)
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            Texture2D workBoxBGTexAwful;
-            Texture2D workBoxBGTexBad;
-            float single;
-            float single1 = p.skills.AverageOfRelevantSkillsFor(workDef);
-            if (single1 < 4f) {
-                workBoxBGTexAwful = WidgetsWork.WorkBoxBGTex_Awful;
-                workBoxBGTexBad = WidgetsWork.WorkBoxBGTex_Bad;
-                single = single1 / 4f;
-            } else if (single1 > 14f) {
-                workBoxBGTexAwful = WidgetsWork.WorkBoxBGTex_Mid;
-                workBoxBGTexBad = WidgetsWork.WorkBoxBGTex_Excellent;
-                single = (single1 - 14f) / 6f;
-            } else {
-                workBoxBGTexAwful = WidgetsWork.WorkBoxBGTex_Bad;
-                workBoxBGTexBad = WidgetsWork.WorkBoxBGTex_Mid;
-                single = (single1 - 4f) / 10f;
-            }
-            bool badWork = MoreThanCapableMod.IsBadWork(p, workDef);
+            var target = AccessTools.Method(typeof(GUI), nameof(GUI.DrawTexture), new [] {typeof(Rect), typeof(Texture)});
+            var insert = AccessTools.Method(typeof(WidgetsWork_DrawWorkBoxBackground), nameof(RedIfBadWork));
 
-            if (badWork) {
-                workBoxBGTexAwful = ContentFinder<Texture2D>.Get("UI/Widgets/WorkBoxBG_Despised", true);
-                workBoxBGTexBad = ContentFinder<Texture2D>.Get("UI/Widgets/WorkBoxBG_Despised", true);
-            }
+            var codes = new List<CodeInstruction>(instructions);
+            
+            // ldarg.0 <- can't use, it's jump target
+	        // ldloc.1
+	        // call GUI.DrawTexture
+            int index = codes.FirstIndexOf(c => target.Equals(c.operand)) - 1;
+            codes.InsertRange(index, new[] {
+                new CodeInstruction(OpCodes.Ldarg_1),
+                new CodeInstruction(OpCodes.Ldarg_2),
+                new CodeInstruction(OpCodes.Ldloca, 1),
+                new CodeInstruction(OpCodes.Ldloca, 2),
+                new CodeInstruction(OpCodes.Call, insert),
+                new CodeInstruction(OpCodes.Ldarg_0),
+            });
 
-            GUI.DrawTexture(rect, workBoxBGTexAwful);
-            float single2 = GUI.color.r;
-            float single3 = GUI.color.g;
-            Color color = GUI.color;
-            GUI.color = new Color(single2, single3, color.b, single);
-            GUI.DrawTexture(rect, workBoxBGTexBad);
-            if (workDef.relevantSkills.Any<SkillDef>() && single1 <= 2f && p.workSettings.WorkIsActive(workDef)) {
-                GUI.color = Color.white;
-                GUI.DrawTexture(rect.ContractedBy(-2f), WidgetsWork.WorkBoxOverlay_Warning);
+            return codes;
+        }
+
+        static void RedIfBadWork(Rect position, Pawn p, WorkTypeDef workDef, ref Texture workBoxBGTexAwful, ref Texture workBoxBGTexBad)
+        {
+            if (MoreThanCapableMod.IsBadWork(p, workDef))
+            {
+                workBoxBGTexAwful = Resources.workBoxBGTexDespised;
+                workBoxBGTexBad = Resources.workBoxBGTexDespised;
             }
-            Passion passion = p.skills.MaxPassionOfRelevantSkillsFor(workDef);
-            if (passion > Passion.None && !badWork) {
-                GUI.color = new Color(1f, 1f, 1f, 0.4f);
-                Rect rect1 = rect;
-                rect1.xMin = rect.center.x;
-                rect1.yMin = rect.center.y;
-                if (passion == Passion.Minor) {
-                    GUI.DrawTexture(rect1, WidgetsWork.PassionWorkboxMinorIcon);
-                } else if (passion == Passion.Major) {
-                    GUI.DrawTexture(rect1, WidgetsWork.PassionWorkboxMajorIcon);
-                }
-            }
-            GUI.color = Color.white;
-            return false;
         }
     }
 
