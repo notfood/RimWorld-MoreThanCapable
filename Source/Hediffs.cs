@@ -101,7 +101,7 @@ namespace MoreThanCapable
 
         public override bool Evaluate(Pawn pawn)
         {
-            return pawn.WorkTypeIsDisabled(WorkTypeDefOf.Hunting) && MoreThanCapableMod.HasWeapon(pawn);
+            return MoreThanCapableMod.IsNonViolentArmed(pawn);
         }
     }
 }

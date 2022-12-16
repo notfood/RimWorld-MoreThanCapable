@@ -13,12 +13,7 @@ namespace MoreThanCapable
         }
         public override AlertReport GetReport()
         {
-            foreach (Pawn current in PawnsFinder.AllMaps_FreeColonistsSpawned) {
-                if (MoreThanCapableMod.HasBadWork(current)) {
-                    return current;
-                }
-            }
-            return false;
+            return AlertReport.CulpritsAre(PawnsFinder.AllMaps_FreeColonistsSpawned.FindAll(MoreThanCapableMod.HasBadWork));
         }
     }
 
@@ -32,13 +27,7 @@ namespace MoreThanCapable
         }
         public override AlertReport GetReport()
         {
-            foreach (Pawn current in PawnsFinder.AllMaps_FreeColonistsSpawned) {
-                if (current.WorkTypeIsDisabled(WorkTypeDefOf.Hunting)
-                  && ((current.equipment.Primary != null) && MoreThanCapableMod.HasWeapon(current))) {
-                    return current;
-                }
-            }
-            return false;
+            return AlertReport.CulpritsAre(PawnsFinder.AllMaps_FreeColonistsSpawned.FindAll(MoreThanCapableMod.IsNonViolentArmed));
         }
     }
 }

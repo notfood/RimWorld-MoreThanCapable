@@ -16,11 +16,10 @@ namespace MoreThanCapable
 
         public MoreThanCapableMod(ModContentPack content) : base(content)
         {
-            LongEventHandler.QueueLongEvent(Setup, "LibraryStartup", false, null);
-
             new Harmony("rimworld.moreThanCapable").PatchAll();
 
             LongEventHandler.ExecuteWhenFinished(delegate {
+                Setup();
                 Settings = GetSettings<Settings>();
             });
         }
@@ -46,27 +45,26 @@ namespace MoreThanCapable
                 WorkTags.Hauling
             };
 
-            foreach (var backstory in BackstoryDatabase.allBackstories.Values) {
+            foreach (var backstory in DefDatabase<BackstoryDef>.AllDefs) {
 
-                TraitEntry entry = null;
+                BackstoryTrait entry = null;
 
                 foreach (var tag in hatesDumbLabor) {
                     if ((tag & backstory.workDisables) == tag) {
-                        entry = new TraitEntry(hatesDumbLaborTrait, 0);
+                        entry = new BackstoryTrait() {
+                            def = hatesDumbLaborTrait, 
+                            degree = 0
+                        };
                         break;
                     }
                 }
 
                 if (entry != null) {
                     if (backstory.forcedTraits.NullOrEmpty()) {
-                        backstory.forcedTraits = new List<TraitEntry>();
+                        backstory.forcedTraits = new List<BackstoryTrait>();
                     }
                     backstory.forcedTraits.Add(entry);
                 }
-            }
-
-            if (ModsConfig.ActiveModsInLoadOrder.Any(mod => mod.Name.Contains("Force Do Job"))) {
-                Log.Error("MoreThanCapable :: You should remove \"Force Do Job\" from your mod list, as \"MoreThanCapable\" incorporates its functionality, and if both mods are running, you may encounter odd behavior.");
             }
         }
 
@@ -79,6 +77,29 @@ namespace MoreThanCapable
             foreach (var wtd in badwork) {
                 pawn.workSettings.SetPriority(wtd, 0);
             }
+        }
+
+        public static bool CanDisable(Pawn pawn, WorkTags w)
+        {
+            if (Settings.obeyLifeStages && pawn.RaceProps.lifeStageWorkSettings.Any(stage => (stage.workType.workTags & w) != 0 && stage.IsDisabled(pawn))) {
+                return true;
+            }
+
+            return CanDisable(pawn);
+        }
+
+        public static bool CanDisable(Pawn pawn, WorkTypeDef wtd)
+        {
+            if (Settings.obeyLifeStages && pawn.RaceProps.lifeStageWorkSettings.Any(stage => stage.workType == wtd && stage.IsDisabled(pawn))) {
+                return true;
+            }
+            
+            return CanDisable(pawn);
+        }
+
+        public static bool CanDisable(Pawn pawn)
+        {
+            return Settings.obeyGuestExceptions && pawn.GuestStatus > 0;
         }
 
         public static bool IsBadWorkActive(Pawn pawn, WorkTypeDef wtd)
@@ -96,8 +117,12 @@ namespace MoreThanCapable
             return workTypes.Any(kvp => (kvp.Key & pawn.CombinedDisabledWorkTags) != WorkTags.None && kvp.Value.Any(pawn.workSettings.WorkIsActive));
         }
 
-        public static bool HasWeapon(Pawn pawn)
+        public static bool IsNonViolentArmed(Pawn pawn)
         {
+            if ((pawn.CombinedDisabledWorkTags & WorkTags.Violent) == 0) {
+                return false;
+            }
+
             if (pawn.equipment?.Primary == null) {
                 return false;
             }
@@ -121,9 +146,14 @@ namespace MoreThanCapable
 
     public class Settings : ModSettings
     {
-        public List<ThingDef> ignoredWeapons;
-
         public bool allowFDJ = true;
+
+        public bool obeyLifeStages = true;
+
+        public bool obeyGuestExceptions = true;
+
+        public List<ThingDef> ignoredWeapons;   
+
         public void DoWindowContents(Rect canvas)
         {
             var list = new Listing_Standard {
@@ -131,14 +161,20 @@ namespace MoreThanCapable
             };
 
             list.Begin(canvas);
-            list.Gap();
             list.CheckboxLabeled("MTC.allowFDJ".Translate(), ref allowFDJ, "MTC.allowFDJTip".Translate());
+            list.CheckboxLabeled("MTC.obeyLifeStages".Translate(), ref obeyLifeStages, "MTC.obeyLifeStagesTip".Translate());
+            list.CheckboxLabeled("MTC.obeyGuestExceptions".Translate(), ref obeyGuestExceptions, "MTC.obeyGuestExceptionsTip".Translate());
+            list.Gap();
+            list.Label("Ignored Weapons setting is edited manually for now.");
+            list.Label("Config/Mod_1803932954_MoreThanCapableMod.xml");
             list.End();
         }
         public override void ExposeData()
         {
-            Scribe_Collections.Look(ref ignoredWeapons, "ignoredWeapons", LookMode.Def);
             Scribe_Values.Look(ref allowFDJ, "allowFDJ", true);
+            Scribe_Values.Look(ref obeyLifeStages, "obeyLifeStages", true);
+            Scribe_Values.Look(ref obeyGuestExceptions, "obeyGuestExceptions", true);
+            Scribe_Collections.Look(ref ignoredWeapons, "ignoredWeapons", LookMode.Def);
         }
     }
 
