@@ -81,8 +81,12 @@ namespace MoreThanCapable
 
         public static bool CanDisable(Pawn pawn, WorkTags w)
         {
-            if (Settings.obeyLifeStages && pawn.RaceProps.lifeStageWorkSettings.Any(stage => (stage.workType.workTags & w) != 0 && stage.IsDisabled(pawn))) {
-                return true;
+            if (Settings.obeyLifeStages) {
+                foreach (var stage in pawn.RaceProps.lifeStageWorkSettings) {
+                    if ((stage.workType.workTags & w) != 0 && stage.IsDisabled(pawn)) {
+                        return true;
+                    }
+                }
             }
 
             return CanDisable(pawn);
@@ -90,8 +94,12 @@ namespace MoreThanCapable
 
         public static bool CanDisable(Pawn pawn, WorkTypeDef wtd)
         {
-            if (Settings.obeyLifeStages && pawn.RaceProps.lifeStageWorkSettings.Any(stage => stage.workType == wtd && stage.IsDisabled(pawn))) {
-                return true;
+            if (Settings.obeyLifeStages) {
+                foreach (var stage in pawn.RaceProps.lifeStageWorkSettings) {
+                    if (stage.workType == wtd && stage.IsDisabled(pawn)) {
+                        return true;
+                    }
+                }
             }
             
             return CanDisable(pawn);
