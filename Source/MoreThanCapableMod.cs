@@ -16,12 +16,11 @@ namespace MoreThanCapable
 
         public MoreThanCapableMod(ModContentPack content) : base(content)
         {
+            Settings = GetSettings<Settings>();
+
             new Harmony("rimworld.moreThanCapable").PatchAll();
 
-            LongEventHandler.ExecuteWhenFinished(delegate {
-                Setup();
-                Settings = GetSettings<Settings>();
-            });
+            LongEventHandler.ExecuteWhenFinished(Setup);
         }
 
         public static void Setup()

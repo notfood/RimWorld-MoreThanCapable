@@ -4,7 +4,7 @@
   <MTC.MoreThanCapable>More than Capable</MTC.MoreThanCapable>
   
   <MTC.allowFDJ>Allow "Force Do Job" Behavior.</MTC.allowFDJ>
-  <MTC.allowFDJTip>If this is checked, a pawn can be told to do a specific job, even if not assigned to the work type to which the job belongs, so long as he or she doesn't actually hate the work type. If you prefer vanilla behavior, and want to be able to tell a pawn to do a specific job only if he or she is actually assigned to the relevant work type, then uncheck it.</MTC.allowFDJTip>
+  <MTC.allowFDJTip>If this is checked, a pawn can be told to do a specific job, even if not assigned to the work type to which the job belongs, so long as they don't actually hate the work type. If you prefer vanilla behavior, and want to be able to tell a pawn to do a specific job only if they are actually assigned to the relevant work type, then uncheck it. Requires restart to apply.</MTC.allowFDJTip>
   
   <MTC.obeyLifeStages>Obey Life Stages.</MTC.obeyLifeStages>
   <MTC.obeyLifeStagesTip>If this is checked, work types that have age requirements will be obeyed.</MTC.obeyLifeStagesTip>
