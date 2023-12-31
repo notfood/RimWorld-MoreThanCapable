@@ -22,18 +22,19 @@ namespace MoreThanCapable
             var target = AccessTools.Method(typeof(Pawn_WorkSettings), nameof(Pawn_WorkSettings.GetPriority));
             var replacement = AccessTools.Method(typeof(FloatMenuMakerMap_AddJobGiverWorkOrders), nameof(GetPriority));
 
-            foreach(var code in instructions) {
-                if (target.Equals(code.operand)) {
-                    yield return new CodeInstruction(OpCodes.Ldarg_1);
-                    yield return new CodeInstruction(OpCodes.Call, replacement);
-                } 
-                else {
-                    yield return code;
-                }
+            foreach (var code in instructions)
+            {
+	            if (code.opcode == OpCodes.Callvirt && target.Equals(code.operand))
+	            {
+		            code.opcode = OpCodes.Call;
+		            code.operand = replacement;
+	            }
+
+	            yield return code;
             }
         }
 
-        static int GetPriority(WorkTypeDef wtd, Pawn pawn)
+        static int GetPriority(Pawn pawn, WorkTypeDef wtd)
         {
             if (MoreThanCapableMod.CanDisable(pawn, wtd)) {
                 return pawn.workSettings.GetPriority(wtd);
